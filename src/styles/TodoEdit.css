@@ -1,0 +1,148 @@
+.ir {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+button {
+  all: unset;
+}
+
+
+#todoedit {
+  border: 2px solid grey;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 30px;
+}
+
+.edit-header {
+  margin-bottom: 40px;
+}
+
+.edit-title {
+  font-size: 2rem;
+  margin: unset;
+}
+
+.todo-form {
+  position: relative;
+}
+
+.todo-edit-buttons {
+  width: 80px;
+  height: 35px;
+  position: absolute;
+  top: -40px;
+  right: 0;
+
+  display: flex;
+  gap: 10px;
+}
+
+.button_ok, .button_back {
+  width: 35px;
+  height: 35px;
+  background-color: darkslateblue;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+
+.button_ok:hover, .button_back:hover {
+  background-color: rgb(175, 163, 255);
+}
+
+.button_ok:focus, .button_back:focus {
+  box-shadow: inset 0 0 0 2px rgb(198, 196, 200);
+}
+
+.button_ok::before, .button_back::before {
+  content: ' ';
+  display: block;
+  width: 35px;
+  height: 35px;
+  background-position: center;
+  background-size: contain;
+}
+
+.button_ok::before {
+  background-image: url('/src/assets/icon-edit.svg');
+}
+
+.button_back::before {
+  background-image: url('/src/assets/icon-back.svg');
+}
+
+
+.todo-form-label {
+  all: unset;
+  display: block;
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+
+.todo-form-input {
+  margin-bottom: 20px;
+}
+
+.todo-form-input input {
+  all: unset;
+  display: block;
+  width: 100%;
+  height: 2.8rem;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: 2px solid #CCC;
+  border-radius: 8px;
+}
+
+.todo-form-input input:focus {
+  border-color: dodgerblue;
+}
+
+.todo-form-text {
+  margin-bottom: 20px;
+}
+
+.todo-form-text textarea {
+  all: unset;
+  display: block;
+  width: 100%;
+  height: 7rem;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 2px solid #CCC;
+  border-radius: 8px;
+}
+
+.todo-form-text textarea:focus {
+  border-color: dodgerblue;
+}
+
+.todo-form-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.todo-form-check .todo-form-label {
+  margin-bottom: unset;
+  margin-left: auto;
+}
+
+.todo-form-check input {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
