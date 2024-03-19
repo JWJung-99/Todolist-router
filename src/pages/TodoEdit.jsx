@@ -2,7 +2,7 @@
 import useAxiosInstance from "@hooks/useAxiosInstance.mjs";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import '@styles/TodoEdit.css';
 
 
@@ -12,6 +12,7 @@ function TodoEdit () {
   const axios = useAxiosInstance();
   const {register, handleSubmit, reset} = useForm();
   const navigate = useNavigate();
+  const {reFetch} = useOutletContext();
 
   // 렌더링할 때 기존 데이터 불러오기
   useEffect(() => {
@@ -40,6 +41,7 @@ function TodoEdit () {
       alert('할일을 수정했습니다.');
       reset();
       navigate(-1);
+      reFetch();
     }
     catch(err) {
       console.error(err);
