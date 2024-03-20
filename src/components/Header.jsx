@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { saveIPState } from "@recoil/atoms.mjs";
 
 function Header() {
+
+  const [saveip, setSaveip] = useRecoilState(saveIPState);
+
   return (
     <header>
       <h1>Todo List :)</h1>
@@ -13,6 +18,13 @@ function Header() {
           </ul>
         </div>
       </nav>
+
+      <div>
+        <label htmlFor="saveip">IP 공개</label>
+        <input type="checkbox" id="saveip" checked={saveip} onChange={() => setSaveip(!saveip)} />
+      </div>
+
+
     </header>
   )
 }

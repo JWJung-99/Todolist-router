@@ -1,9 +1,12 @@
 import useAxiosInstance from "@hooks/useAxiosInstance.mjs";
+import { saveIPState } from "@recoil/atoms.mjs";
 import '@styles/TodoAdd.css';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
 function TodoAdd() {
+  const saveip = useRecoilValue(saveIPState);
   const axios = useAxiosInstance();
                   // input 입력값을 받을 수 있음.
   const {register, handleSubmit, reset, setFocus} = useForm();
@@ -11,6 +14,7 @@ function TodoAdd() {
 
   async function onSubmit(formData) {
     try {
+      formData.saveIP = saveip;
       await axios.post('/todolist', formData)
       alert("할일을 추가했습니다.");
       setFocus('title');
@@ -51,6 +55,10 @@ function TodoAdd() {
               id="content"  
               {...register('content', {required: '내용을 입력해야 합니다.'})}
             />
+          </div>
+
+          <div>
+            {saveip && <span>IP가 저장됩니다.</span>}
           </div>
 
         </form>

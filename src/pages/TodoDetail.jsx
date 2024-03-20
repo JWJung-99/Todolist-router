@@ -5,6 +5,8 @@ import ErrorPage from "@pages/ErrorPage";
 import '@styles/TodoDetail.css';
 import { useEffect, useState } from "react";
 import useAxiosInstance from "@hooks/useAxiosInstance.mjs";
+import { saveIPState } from "@recoil/atoms.mjs";
+import { useRecoilValue } from "recoil";
 
 
 function TodoDetail() {
@@ -13,6 +15,7 @@ function TodoDetail() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const axios = useAxiosInstance();
+  const saveip = useRecoilValue(saveIPState);
 
   useEffect(() => {
     fetchDetail();
@@ -31,7 +34,7 @@ function TodoDetail() {
     }
   }
 
-  const { title, content, done, createdAt, updatedAt } = data?.item || {};
+  const { title, content, done, createdAt, updatedAt, ip } = data?.item || {};
 
   return (
     <>
@@ -66,6 +69,10 @@ function TodoDetail() {
 
             <div className="contents-content">
               {content}
+            </div>
+
+            <div>
+              {saveip && ip && <span>IP : {ip}</span>}
             </div>
 
           </div>
